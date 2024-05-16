@@ -15,7 +15,7 @@ def load_data():
     pass
 
 
-class Toby(nn.Module):
+class Block(nn.Module):
     """
     this is a class used to create the block  
     """
@@ -100,9 +100,10 @@ class Resnet(nn.Module):
         """
         initalize
         """
-        self.block1 = Toby()
-        self.block2 = Toby()
-        self.block3 = Toby()
+        #left empty to add in variables later
+        self.block1 = Block()
+        self.block2 = Block()
+        self.block3 = Block()
         self.linear = nn.Linear()
         
     def forward(self,x):
