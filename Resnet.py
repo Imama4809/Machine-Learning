@@ -19,6 +19,7 @@ class Block(nn.Module):
     """
     this is a class used to create the block  
     """
+    super(Block,self).__init__()
     def __init__(self,filters,kernal_size, stride, padding,NOLIB, HT = False):
         """
         initialize
