@@ -9,11 +9,11 @@ from torch.utils.data import DataLoader
 import math
 
 
-# def attention(query, key, value):
-#     d_k = query.size(-1)
-#     kq_pair = torch.matmul(query, key.transpose(-2,-1)) / math.sqrt(d_k)
+def attention(query, key, value):
+    d_k = query.size(-1)
+    kq_pair = torch.matmul(query, key.transpose(-2,-1)) / math.sqrt(d_k)
+    kq_pair = kq_pair.softmax(dim=-1)
+    return torch.matmul(kq_pair,value), kq_pair
 
-x = torch.randn(2, 4)
-print(x)
-x.transpose(-2,-1)
-print(x)
+
+
