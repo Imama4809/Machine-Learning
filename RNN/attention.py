@@ -16,10 +16,6 @@ def attention(key, query, value):
     kq_pair = kq_pair.softmax(dim=-1)
     return torch.matmul(kq_pair,value), kq_pair
 
-def clones(module, N):
-    "Produce N identical layers."
-    return nn.ModuleList([copy.deepcopy(module) for _ in range(N)])
-
 class Mulithead_Attention(nn.Module):
     def __init__(self,d_m, d_k, d_v, heads ):
         super(Mulithead_Attention,self).__init__()
