@@ -9,7 +9,7 @@ from torch.utils.data import DataLoader
 import math
 import copy
 
-class LSTM(nn.Module):
+class LSTM_CELL(nn.Module):
     def __init__(self, C_s, h_s, x_t): #in the alphabet, s comes right before t, thus t-1 = s
         super(LSTM,self).__init__()
         self.C_s = C_s
@@ -31,7 +31,7 @@ class LSTM(nn.Module):
         self.W_o = nn.Parameter(torch.random(self.x_t.size(0),self.x_t.size(0)+self.h_s.size(0)))
         self.B_o = nn.Parameter(torch.random(self.x_t.size(0)))
         
-    def forward(self,x):
+    def forward(self,x = self.x_t):
         #forget gate
         f_t = torch.sigmoid(torch.matmul(self.W_f,self.xhconcat) + self.B_f)
         
@@ -48,5 +48,3 @@ class LSTM(nn.Module):
         return h_t,C_t
         
 
-# val = torch.rand(1,2,3)
-# print(val.size(2))
